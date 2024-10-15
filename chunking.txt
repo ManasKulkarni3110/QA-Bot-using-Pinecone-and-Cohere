@@ -1,0 +1,16 @@
+Chunking in the context of knowledge management and artificial intelligence (AI) involves segmenting large volumes of complex information into smaller, more manageable units. This strategy is essential for improving information processing, comprehension, and retrieval in a business environment. When dealing with large documents or data sets, chunking becomes crucial to ensure efficient storage, retrieval, and processing. Here are some common techniques for data chunking:
+•	Fixed-size chunks:
+In this approach, you divide your data (such as text or documents) into equal-sized segments. For example, you might split a long article into paragraphs of approximately 200 words each.
+Fixed-size chunks are straightforward to implement and work well when you want consistent segment lengths.
+However, they may not always capture meaningful content boundaries, especially if the text varies in complexity or context.
+•	Variable-sized chunks based on content:
+Instead of using fixed sizes, this method focuses on the actual content. It identifies natural breaks in the data, such as sentence endings, paragraph breaks, or other semantic cues.
+For instance, if you’re processing a news article, you’d split it at the end of each sentence or paragraph.
+Variable-sized chunks preserve context better but require more sophisticated algorithms to identify content boundaries.
+•	Customized or iterative approaches:
+Sometimes a hybrid strategy works best. You can combine fixed-size chunks with variable-sized ones.
+For example, you might use fixed-size chunks for the beginning and end of a document and variable-sized chunks for the middle.
+Additionally, appending document titles to chunks from the middle can help maintain context.
+Customization allows you to adapt to specific use cases and data types.
+
+When chunking data, consider factors such as the type of data, specific use case, and the need for context preservation. Overlapping a small amount of text between chunks (around 10%) can help maintain context. If you’re using integrated vectorization (preview) in Azure AI Search, a default chunking strategy using the text split skill is applied. Alternatively, you can apply a custom chunking strategy using a custom skill2. Remember that chunking plays a critical role in handling large language models and ensuring efficient processing.

@@ -1,0 +1,24 @@
+# Use an official Python runtime as a base image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements directly into the working directory
+COPY requirements.txt ./
+
+# Install any necessary dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
+# Expose port for Streamlit/Gradio (optional depending on your use case)
+EXPOSE 7860
+
+# Ensure the environment variables are loaded
+ENV COHERE_API_KEY=RcO7I05QJgF7t44biTgY85UPxFfUPISCbXPFrRvN
+ENV PINECONE_API_KEY=7503c7e4-ecbb-43b8-8a06-920f4281ff21
+
+# Run the app (Gradio)
+CMD ["python", "-c", "import Part_2; Part_2.iface.launch()"]

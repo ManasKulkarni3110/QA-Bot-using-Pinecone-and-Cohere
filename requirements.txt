@@ -1,0 +1,11 @@
+streamlit
+PyMuPDF
+cohere
+pinecone-client
+datasets
+transformers
+sentence-transformers
+pdfplumber
+gradio
+PyPDF2
+python-dotenv
