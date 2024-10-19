@@ -1,85 +1,123 @@
 # Interactive QA Bot with Gradio Interface
 
-This repository contains an interactive Question Answering (QA) bot that allows users to input queries, upload PDF documents, and retrieve real-time answers. The system is built with Python, Gradio for the user interface, and leverages various AI/ML models for document processing and question answering. The project is containerized using Docker for easy deployment.
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Features
-- **Real-time QA Bot**: Users can ask questions and get answers based on provided documents.
-- **PDF Upload Support**: Users can upload PDFs, and the system processes them to answer queries.
-- **Gradio Interface**: Simple and interactive interface for user interaction.
-- **Dockerized**: Containerized for easy setup and deployment.
-- **API Key Management**: Securely manage API keys using environment variables.
+This repository contains an interactive Question Answering (QA) bot that allows users to input queries, upload PDF documents, and retrieve real-time answers. The system is built with Python, Gradio for the user interface, and leverages various AI/ML models for document processing and question answering.
 
-## Requirements
+## 🚀 Features
 
-- **Python 3.10** or higher
-- **Gradio**: For the user interface
-- **Cohere API**: For generative responses (optional)
-- **Pinecone**: For efficient document embedding and retrieval (optional)
+- **Real-time QA Bot**: Ask questions and get answers based on provided documents.
+- **PDF Upload Support**: Upload PDFs for document processing and analysis.
+- **Gradio Interface**: Simple and interactive web-based user interface.
+- **Dockerized**: Containerized for easy setup and deployment across different environments.
+- **API Key Management**: Secure handling of API keys using environment variables.
+- **Scalable Architecture**: Designed to handle multiple users and large documents efficiently.
 
-## Setup Instructions
+## 📋 Requirements
+
+- Python 3.10 or higher
+- Gradio
+- Cohere API (optional, for enhanced generative responses)
+- Pinecone (optional, for efficient document embedding and retrieval)
+
+## 🛠️ Setup Instructions
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-2. Install Dependencies
-Ensure you have Python 3.10 installed. Install the required dependencies via pip:
+git clone https://github.com/yourusername/interactive-qa-bot.git
+cd interactive-qa-bot
+```
 
-bash
-Copy code
+### 2. Install Dependencies
+
+Ensure you have Python 3.10+ installed, then set up a virtual environment and install dependencies:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 pip install -r requirements.txt
-3. API Key Configuration
-For using external services (like Cohere and Pinecone), you need to set the API keys in the environment. Create a .env file and add your keys:
+```
 
-bash
-Copy code
+### 3. API Key Configuration
+
+Create a `.env` file in the root directory and add your API keys:
+
+```
 COHERE_API_KEY=your_cohere_api_key
 PINECONE_API_KEY=your_pinecone_api_key
-Alternatively, you can pass these keys directly as environment variables when running the Docker container.
+```
 
-4. Run the App Locally
-You can run the Gradio app locally by executing the following command:
+### 4. Run the App Locally
 
-bash
-Copy code
-python Part_2.py
-The app will start on http://localhost:7860 by default.
+Start the Gradio app:
 
-5. Running with Docker
-a. Build the Docker Image
-Ensure Docker is installed on your system, then build the image:
+```bash
+python app/main.py
+```
 
-bash
-Copy code
-docker build -t qa-bot .
-b. Run the Docker Container
-Run the container, exposing port 7860:
+Access the app at `http://localhost:7860`.
 
-bash
-Copy code
-docker run -p 7860:7860 --env-file .env qa-bot
-The app will now be accessible at http://localhost:7860.
+### 5. Running with Docker
 
-Project Structure
-bash
-Copy code
-📁 your-repo-name/
-├── 📁 app/               # Contains main application files
-├── Part_2.ipynb          # Jupyter Notebook with Gradio app
-├── requirements.txt      # Project dependencies
-├── Dockerfile            # Docker configuration
-└── README.md             # This readme file
-Troubleshooting
-Notebook Errors: If you encounter issues related to Jupyter notebook dependencies, ensure the notebook is properly converted to a Python script as part of the Docker build process.
-Missing API Keys: Ensure that the required API keys (e.g., Cohere, Pinecone) are correctly set in environment variables.
-Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any improvements, bug fixes, or feature additions.
+a. Build the Docker image:
 
-Steps to Contribute:
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes and commit (git commit -m 'Add new feature').
-Push to the branch (git push origin feature-branch).
-Open a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```bash
+docker build -t interactive-qa-bot .
+```
+
+b. Run the Docker container:
+
+```bash
+docker run -p 7860:7860 --env-file .env interactive-qa-bot
+```
+
+Access the app at `http://localhost:7860`.
+
+```
+
+## 🧪 Testing
+
+Run the test suite to ensure everything is working correctly:
+
+```bash
+pytest tests/
+```
+
+## 🔧 Troubleshooting
+
+- **Notebook Errors**: If using Jupyter notebooks, ensure they are properly converted to Python scripts for Docker builds.
+- **Missing API Keys**: Verify that all required API keys are correctly set in your environment variables or `.env` file.
+- **Docker Issues**: Make sure Docker is installed and running on your system. Check Docker logs for detailed error messages.
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Gradio](https://www.gradio.app/) for the amazing interface framework
+- [Cohere](https://cohere.ai/) for their powerful language models
+- [Pinecone](https://www.pinecone.io/) for vector similarity search capabilities
+
+## 📬 Contact
+
+For any queries or support, please open an issue in the GitHub repository or contact the maintainers directly.
+
+---
+
+Happy coding! 🚀👨‍💻👩‍💻
