@@ -1,24 +1,30 @@
 # Use an official Python runtime as a base image
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy the requirements directly into the working directory
-COPY requirements.txt ./
+COPY requirements.txt ./ 
 
-# Install any necessary dependencies
+# Install necessary dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the current directory contents into the container at /app
-COPY . .
+# Install nbconvert for converting notebooks to Python scripts
+RUN pip install nbconvert
 
-# Expose port for Streamlit/Gradio (optional depending on your use case)
+# Copy the Jupyter Notebook file into the working directory
+COPY Part_2.ipynb /app/
+
+# Convert the Jupyter notebook to a Python script
+RUN jupyter nbconvert --to script Part_2.ipynb
+
+# Expose the port for Gradio (7860 by default)
 EXPOSE 7860
 
-# Ensure the environment variables are loaded
-ENV COHERE_API_KEY=RcO7I05QJgF7t44biTgY85UPxFfUPISCbXPFrRvN
-ENV PINECONE_API_KEY=7503c7e4-ecbb-43b8-8a06-920f4281ff21
+# Define environment variables (Optional for sensitive data)
+# ENV COHERE_API_KEY=<your_cohere_api_key>
+# ENV PINECONE_API_KEY=<your_pinecone_api_key>
 
-# Run the app (Gradio)
-CMD ["python", "-c", "import Part_2; Part_2.iface.launch()"]
+# Run the Gradio app by launching the converted Python script
+CMD ["python", "Part_2.py"]
